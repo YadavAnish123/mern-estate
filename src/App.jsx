@@ -5,9 +5,11 @@ import Signin from './pages/Signin';
 import SignUP from './pages/SignUP';
 import About from './pages/About';
 import Profile from './pages/Profile';
+import Header from './components/Header';
   
  const App = () => {
   return  <BrowserRouter>
+  <Header /> 
   <Routes>
     <Route path='/' element={<Home/>}/> 
     <Route path='/sign-in' element={<Signin/>}/> 
