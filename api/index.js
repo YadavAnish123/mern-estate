@@ -1,14 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
 import { config } from "dotenv";
-import {router} from './router/userRouter';
+import router from './router/userRouter.js';
  
  
 const app=express();
 config();
 
 const url=process.env.MONGODB_URL
- mongoose.connect(url)
+const ur=process.env.ur
+ mongoose.connect(ur)
  .then(()=>{
     console.log("Connected to database")
  })
