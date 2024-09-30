@@ -9,10 +9,10 @@ const Header=()=> {
     <Link to='/'> 
         <h1 className='font-bold text-sm sm:text-xl'>
              
-            <span className='text-slate-500'>Satyam</span>
-            <span className='text-slate-700'>Estate</span>
+            <span className='px-1 text-slate-500'>Satyam</span>
+            <span className='px-1 text-slate-700'>Estate</span>
         </h1>
-        </Link>
+    </Link>
        <form className='bg-slate-100 p-3 rounded-lg flex items-center'>
         <input type="text" placeholder='search...' className='bg-transparent focus:outline-none w-24 sm:w-64' />
         <FaSearch className='text-slate-600'/>
@@ -25,9 +25,8 @@ const Header=()=> {
            <li className='hidden sm:inline text-slate-700 hover:underline'>About</li>
            </Link>
            <Link to='/sign-in'> 
-           <li className=' sm:inline text-slate-700 hover:underline'>Sig in</li>
-           </Link>
-             
+           <li className=' sm:inline text-slate-700 hover:underline px-2'>Sig in</li>
+           </Link>    
         </ul> 
         </div>
     </header>
