@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
- 
-
+ import {  useDispatch, useSelector } from 'react-redux';
+import { signInStart,signInFailure,signInSucess } from '../redux/user/userSlice';
 const Signin=()=> {
   const [formData, setFormData] = useState({
     
     email: '',
     password: '',
   });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+   const {loading,error}=useSelector((state)=>state.user)
   const navigate=useNavigate();
+  const dispatch=useDispatch()
 
   const onChangeHandler = (e) => {
     setFormData({
@@ -25,7 +25,7 @@ const Signin=()=> {
     
 
     try {
-      setLoading(true);
+      dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: {
@@ -36,23 +36,20 @@ const Signin=()=> {
       const data = await res.json();
       
       if (data.success==false) { // Corrected spelling of 'success'
-        setError(data.message); // Corrected spelling of 'message'
-        setLoading(false);
+         dispatch(signInFailure(data.message))
         return;
       }
       
 
-      console.log(data);
+      
       // Optionally, redirect the user or clear the form here
-      setError(null)
-      setLoading(false)
+      dispatch(signInSucess(data))
       navigate('/')
       
        
 
     } catch (error) {
-      setError(error.message || 'An error occurred'); // Default message if error.message is not available
-      setLoading(false);
+       dispatch(signInFailure(error.message))
     }  
   }
   return (
