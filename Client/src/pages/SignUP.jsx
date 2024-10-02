@@ -20,9 +20,10 @@ const SignUP = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading before the fetch
+   
 
     try {
+      setLoading(true); // Start loading before the fetch
       const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
@@ -31,8 +32,8 @@ const SignUP = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      navigate('/sign-in')
-      if (!data.success) { // Corrected spelling of 'success'
+      
+      if (data.success===false) { // Corrected spelling of 'success'
         setError(data.message); // Corrected spelling of 'message'
         setLoading(false);
         return;
@@ -46,13 +47,12 @@ const SignUP = () => {
 
     } catch (error) {
       setError(error.message || 'An error occurred'); // Default message if error.message is not available
-    } finally {
-      setLoading(false); // Ensure loading is turned off
-    }
+      setLoading(false);
+    }  
   };
 
   return (
-    <div className='p-3 max-w-lg mx-auto py-8'> 
+    <body className='p-3 max-w-lg mx-auto py-8'> 
       <h1 className='font-semibold text-center py-8'>SignUP</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}> {/* Use onSubmit on the form */}
         <input 
@@ -92,7 +92,7 @@ const SignUP = () => {
         </span>
       </form>
       {error && <p className='text-red-500'>{error}</p>}
-    </div>
+    </body>
   );
 };
 
