@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 import { config } from "dotenv";
 import router from './router/user.router.js';
 import auth from "./router/auth.router.js";
-
+import cors from 'cors';
 const app = express();
 config(); // Load environment variables
 app.use(express.json()); // Middleware to parse JSON
-
+app.use(cors())
 const url = process.env.MONGODB_URL;
 
 // Connect to MongoDB

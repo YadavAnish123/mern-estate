@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
  import {  useDispatch, useSelector } from 'react-redux';
 import { signInStart,signInFailure,signInSucess } from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 const Signin=()=> {
   const [formData, setFormData] = useState({
     
@@ -79,6 +80,7 @@ const Signin=()=> {
       >
         {loading ? 'Loading...' : 'Submit'} {/* Conditional button text */}
       </button>
+      <OAuth/>
       <span className='hover:underline text-center'>
         Dont have an account? 
         <Link className='text-cyan-700' to={'/sign-up'}> SignUp</Link>
