@@ -9,7 +9,7 @@ const OAuth = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector(state => state.user); // Move this outside of the function
-  console.log(currentUser.avatar)
+ // console.log(currentUser.avatar)
   const handleGoogleClick = async () => {
     try {
       const provider = new GoogleAuthProvider();

@@ -28,17 +28,17 @@ const Header=()=> {
             <Link to='/about'> 
            <li className='hidden sm:inline text-white hover:underline'>About</li>
            </Link>
+           <Link to='/profile'>
           {currentUser ? (
             <img
               src={currentUser.avatar}
               alt='User Avatar'
-              className='w-8 h-8 rounded-full border-2 border-white ml-2' // Adjust styles as needed
+              className='w-8 h-8 rounded-full border-2 border-white ml-2 object-cover' // Adjust styles as needed
             />
           ) : (
-            <Link to='/sign-in'>
               <li className='sm:inline text-white hover:underline px-2'>Sign in</li>
-            </Link>
           )}
+          </Link>
            <Link to='/sign-up'> 
            <li className=' sm:inline text-white hover:underline px-2'>Sign Up</li>
            </Link>    
