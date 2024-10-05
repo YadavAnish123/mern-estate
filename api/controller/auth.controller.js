@@ -41,6 +41,7 @@ export const signin = async(req, res, next) => {
 
 export const google=async(req, res, next)=>{
        const {email, name, photo}=req.body
+        
        try{
 
          const user= await User.findOne({email})
@@ -52,6 +53,7 @@ export const google=async(req, res, next)=>{
           .cookie("access_token",token,{httpOnly:true})
           .status(200)
           .json(rest)
+           
          }else{
           const generatePassword=Math.random().toString(36).slice(-8)+Math.random().toString(36).slice(-8);
           const hashedPassword=bcryptjs.hashSync(generatePassword,10);
@@ -63,6 +65,8 @@ export const google=async(req, res, next)=>{
             .cookie("access_token",token,{httpOnly:true})
             .status(200)
             .json(rest)
+
+             
          }
        }catch(error)
        {
