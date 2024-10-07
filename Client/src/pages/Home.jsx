@@ -1,9 +1,12 @@
  import React, { useState, useEffect } from 'react';
+ import Modal from './Modal'
 
 const RealEstateHomePage = () => {
   const [properties, setProperties] = useState([]);
   const [visibleProperties, setVisibleProperties] = useState(9);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedProperty, setSelectedProperty] = useState(null);
 
   // Function to fetch random images from Unsplash
   const fetchRandomImages = async () => {
@@ -63,6 +66,15 @@ const RealEstateHomePage = () => {
   };
 
   const testimonials = generateTestimonials();
+  const handleViewDetails = (property) => {
+    setSelectedProperty(property);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedProperty(null);
+  };
 
   return (
     <div className="bg-white text-gray-800">
@@ -92,7 +104,7 @@ const RealEstateHomePage = () => {
       </section>
 
       {/* Properties Section */}
-      <section id="properties" className="p-10 bg-gray-100">
+      {/* <section id="properties" className="p-10 bg-gray-100">
         <h3 className="text-3xl font-semibold text-center mb-5">Available Properties</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProperties.slice(0, visibleProperties).map((property) => (
@@ -115,7 +127,38 @@ const RealEstateHomePage = () => {
             </button>
           </div>
         )}
+      </section> */}
+
+<section id="properties" className="p-10 bg-gray-100">
+        <h3 className="text-3xl font-semibold text-center mb-5">Available Properties</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {filteredProperties.slice(0, visibleProperties).map((property) => (
+            <div key={property.id} className="bg-white p-5 rounded shadow-lg border border-gray-200">
+              <img src={property.img} alt={property.name} className="rounded mb-3" />
+              <h4 className="text-xl font-semibold">{property.name}</h4>
+              <p>Location: {property.location}</p>
+              <p>Price: {property.price}</p>
+              <button 
+                onClick={() => handleViewDetails(property)} 
+                className="bg-slate-700 text-white p-2 rounded mt-2">
+                View Details
+              </button>
+            </div>
+          ))}
+        </div>
+        {visibleProperties < filteredProperties.length && (
+          <div className="text-center mt-5">
+            <button 
+              onClick={handleShowMore} 
+              className="bg-blue-600 text-white p-3 rounded">
+              See More
+            </button>
+          </div>
+        )}
       </section>
+
+      {/* Modal for Property Details */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} property={selectedProperty} />
 
 
       {/* Why Choose Us Section */}
@@ -138,49 +181,9 @@ const RealEstateHomePage = () => {
  
 
    
-      {/* Contact Us Section */}
-      <section id="contact" className="p-10 bg-slate-700 flex flex-col lg:flex-row mt-15">
-        {/* Left Part: Address and Customer Care */}
-        <div className="flex-1 text-white mb-5 lg:mr-10 ml-10 ">
-          <h3 className="text-3xl font-semibold mb-5">Get in Touch!</h3>
-          <h4 className="font-semibold">Address:</h4>
-          <p>
-            Floor no-2, Tapasya Corp Heights,<br />
-            Subarea, Sector 126,<br />
-            Noida, Uttar Pradesh 201303
-          </p>
-          <h4 className="font-semibold mt-5">Customer Care:</h4>
-          <p>📞 +91-9xxxxxxxx<br />
-          📧 info@satyamestate.com</p>
-        </div>
-
-        {/* Middle Part: Useful Links */}
-        <div className="flex-1 mb-5 mt-15">
-          <h4 className="text-white font-semibold mb-3">Useful Links:</h4>
-          <ul className="text-white space-y-2">
-            <li><a href="/top-properties" className="text-blue-400 hover:underline">Top Properties</a></li>
-            <li><a href="/about-us" className="text-blue-400 hover:underline">About Us</a></li>
-            <li><a href="/services" className="text-blue-400 hover:underline">Our Services</a></li>
-            <li><a href="/contact" className="text-blue-400 hover:underline">Contact Us</a></li>
-          </ul>
-        </div>
-
-        {/* Right Part: Contact Form */}
-        <div className="flex-1 ">
-          <form className="flex flex-col max-w-md mx-auto space-y-4">
-            <input type="text" placeholder="Name" className="p-3 rounded border bg-slate-300 border-gray-300" />
-            <input type="email" placeholder="Email" className="p-3 rounded border bg-slate-300 border-gray-300" />
-            <input type="tel" placeholder="Phone Number" className="p-3 rounded border bg-slate-300 border-gray-300" />
-            <textarea placeholder="Your Message" className="p-3 rounded border bg-slate-300 border-gray-300 h-24" />
-            <button className="bg-sky-700 text-white p-3 rounded">Submit</button>
-          </form>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="p-5 bg-slate-700 text-center text-white mb-4">
-        <p>&copy; 2024 Your Real Estate Company Name. All rights reserved.</p>
-      </footer>
+      
+     
+  
       </div>
     
   );
