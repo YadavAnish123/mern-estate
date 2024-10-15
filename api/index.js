@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { config } from "dotenv";
 import router from './router/user.router.js';
 import auth from "./router/auth.router.js";
+import propertyrouter from "./router/property.router.js"; // Update the import path
 import cors from 'cors';
 import cookieParser from "cookie-parser";
 //import cookieParser from "cookie-parser";
@@ -25,6 +26,7 @@ mongoose.connect(url)
 // Define routes
 app.use('/api/user', router);
 app.use('/api/auth', auth);
+app.use('/api/property', propertyrouter);
 
 // Error-handling middleware
 app.use((err, req, res, next) => {

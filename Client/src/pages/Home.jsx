@@ -133,7 +133,7 @@ const RealEstateHomePage = () => {
         <h3 className="text-3xl font-semibold text-center mb-5">Available Properties</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredProperties.slice(0, visibleProperties).map((property) => (
-            <div key={property.id} className="bg-white p-5 rounded shadow-lg border border-gray-200">
+            <div key={property.id} className="bg-white p-5 rounded shadow-lg border border-gray-200 hover:scale-105">
               <img src={property.img} alt={property.name} className="rounded mb-3" />
               <h4 className="text-xl font-semibold">{property.name}</h4>
               <p>Location: {property.location}</p>
@@ -150,7 +150,7 @@ const RealEstateHomePage = () => {
           <div className="text-center mt-5">
             <button 
               onClick={handleShowMore} 
-              className="bg-blue-600 text-white p-3 rounded">
+              className="bg-sky-700 text-white p-3 rounded">
               See More
             </button>
           </div>
