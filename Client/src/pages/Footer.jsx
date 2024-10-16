@@ -34,9 +34,9 @@ const Footer=()=> {
         Subarea, Sector 126,<br />
         Noida, Uttar Pradesh 201303
       </p>
-      <h4 className="font-semibold mt-5">Customer Care:</h4>
-      <p>📞 +91-9xxxxxxxx<br />
-      📧 info@satyamestate.com</p>
+      <h4 className="font-semibold mt-5">Contact us :</h4>
+      <p>📞 +91-7007648643<br />
+      📧 info@estate.com</p>
     </div>
 
     {/* Middle Part: Useful Links */}
@@ -73,7 +73,7 @@ const Footer=()=> {
   </section>
   {/* Footer */}
   <footer className="p-5 bg-slate-700 text-center text-white mb-4 ">
-    <p>&copy; 2024 Your Real Estate Company Name. All rights reserved.</p>
+    <p>&copy; 2024 LandMarks Reality. All rights reserved.</p>
   </footer>
   </div>
   )

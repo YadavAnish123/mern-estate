@@ -54,6 +54,7 @@ const Signin=()=> {
     }  
   }
   return (
+    <body className='bg-gray-100'> 
     <div className='p-3 max-w-lg mx-auto py-8 '> 
     <h1 className='font-semibold text-center py-8'>SignIN</h1>
     <form className='flex flex-col gap-4' onSubmit={handleSubmit}> {/* Use onSubmit on the form */}
@@ -88,6 +89,7 @@ const Signin=()=> {
     </form>
     {error && <p className='text-red-500'>{error}</p>}
   </div>
+  </body>
 );
   
 }

@@ -52,7 +52,8 @@ const SignUP = () => {
   };
 
   return (
-    <body className='p-3 max-w-lg mx-auto py-8'> 
+    <body className='bg-gray-100'> 
+    <div className='p-3 max-w-lg mx-auto py-8'> 
       <h1 className='font-semibold text-center py-8'>SignUP</h1>
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}> {/* Use onSubmit on the form */}
         <input 
@@ -92,6 +93,7 @@ const SignUP = () => {
         </span>
       </form>
       {error && <p className='text-red-500'>{error}</p>}
+    </div>
     </body>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const About = () => {
+const About = ({logoUrl}) => {
   const teamMembers = [
     {
       id: 1,
@@ -24,22 +24,38 @@ const About = () => {
   ];
   return (
     <div> 
-    <div className="p-10 bg-gray-100 text-gray-800">
+    <div className=" bg-gray-100 text-gray-800">
       {/* Introduction Section */}
-      <section className="mb-10">
-        <h2 className="text-4xl font-semibold text-center mb-5">About Us</h2>
-        <p className="text-center max-w-2xl mx-auto">
-          At Satyam Estate, we are dedicated to helping you find your dream property. With years of experience in the real estate market, our expert team is here to guide you through every step of the process.
-        </p>
+      <section
+        className="h-80 flex items-center justify-center relative"
+        style={{
+          backgroundImage: `url('https://images.pexels.com/photos/28775231/pexels-photo-28775231/free-photo-of-silhouette-of-mosque-at-sunset-with-dramatic-sky.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.9,
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-40"></div>
+        <div className="relative p-6 sm:p-8 text-white text-center">
+          <h2 className="text-6xl sm:text-6xl md:text-8xl font-semibold">Our Brief History</h2>
+         
+        </div>
       </section>
-
-      {/* Mission Section */}
-      <section className="mb-10">
-        <h3 className="text-3xl font-semibold mb-3">Our Mission</h3>
-        <p>
-          Our mission is to provide exceptional real estate services with integrity, professionalism, and a personal touch. We strive to meet and exceed our clients' expectations in every transaction.
-        </p>
-      </section>
+    {/* About company */}
+       <section className='sm:flex justify-center'>
+            <div className='sm:w-1/2'>
+              <img src={logoUrl} alt="logo" srcset="" className='w-screen h-auto'/>
+            </div>
+            <div className='sm:w-1/2 bg-white gap-4 p-4'>
+               <h1 className='text-3xl font-semibold '>Get To Know About Landmarks Reality</h1>
+                
+               <h1 className='mt-8 underline text-lg'>THE BEST REAL ESTATE CONSULTANT IN DELHI/NCR</h1>
+               <p className='mt-2'>With over a decade of experience in the real estate market, Landmarks Reality has established itself as a trusted name in the industry. Our commitment to making the real estate experience seamless and accessible has driven our success.</p>
+               <p className='mt-8'>Under the guidance of our dedicated team, we have successfully completed projects that have brought joy to more than 50 happy clients, reflecting our strong track record in customer satisfaction. Our diverse portfolio includes a wide range of residential and commercial properties, from luxurious apartments and villas to thriving commercial spaces.</p>
+               <p className='mt-8'>We take pride in our reputation for excellence, having facilitated over 100 successful transactions. Our focus on client relationships and personalized service has made us a preferred choice for investors seeking reliable real estate consulting in Delhi/NCR.</p>
+            <p className='mt-8'>Join the growing family of satisfied clients and experience the Landmarks Reality difference!</p>
+            </div>
+       </section>
 
       {/* Values Section */}
       <section className="mb-10">
